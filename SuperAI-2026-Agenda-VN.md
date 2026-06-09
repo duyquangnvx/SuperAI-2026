@@ -39,7 +39,7 @@ Balaji phân tích bối cảnh công nghệ mới xoay quanh ba trụ cột: **
 Phân tích cách AI đang định hình lại phần mềm, doanh nghiệp và thị trường — điều gì xảy ra khi **trí tuệ trở thành một lớp nền tảng (platform layer)** xuyên suốt nền kinh tế.
 
 ### 09:50–10:30 · The Global Frontier of AI Models (Panel)
-**Vincent Maladière** (Mistral AI) · **Cherie Shi** (MiniMax) · **Hemant Mohapatra** (Lightspeed India) · điều phối: **Zixuan Li** (Z.ai)
+**Geoff Soon** (VP of Revenue APAC, Mistral) · **Cherie Shi** (MiniMax) · **Hemant Mohapatra** (Lightspeed India) · điều phối: **Zixuan Li** (Z.ai)
 Mô hình frontier đang trở thành lớp nền tảng cho chu kỳ công nghệ tiếp theo. Panel quy tụ các nhà xây dựng mô hình và nhà đầu tư AI để bàn về: frontier AI đang đi về đâu, điều gì quan trọng **ngoài các benchmark**, và làn sóng năng lực kế tiếp sẽ định hình lại "AI stack" toàn cầu ra sao.
 
 ### 10:30–10:50 · Enabling AI Agents to Discover the Web in Real Time (Keynote)
@@ -88,11 +88,15 @@ Từ mô hình nền tảng đến app tiêu dùng và công cụ doanh nghiệp
 **Will Bryk** — CEO, Exa
 "Mọi tìm kiếm bạn từng chạy đều là một sự thỏa hiệp — một danh sách phỏng đoán, xếp hạng để click." Khi agent thực hiện tìm kiếm ở quy mô vượt xa con người, **hạ tầng tri thức đang được tái cấu trúc** để cung cấp thông tin đầy đủ, chính xác trong mili-giây cho cả AI lẫn con người.
 
-### 16:40–17:00 · The Human Side of Agents (Keynote)
+### 16:40–17:10 · The Human Side of Agents (Keynote)
 **Moe Abdula** — VP, Customer Engineering, Google Cloud
 Khía cạnh con người của agent: cách con người và agent phối hợp, tin tưởng và quản trị trong doanh nghiệp.
 
-### 17:30–18:00 · Intelligent Factories: The Next Industrial Revolution (Panel)
+### 17:10–17:35 · After the Breakthrough: What Comes Next for AI? (Fireside Chat)
+**Balaji Srinivasan** (Founder, Investor & Author, *The Network State*) · **Benedict Evans** (Analyst)
+Trò chuyện về điều gì đến sau những đột phá AI gần đây — hướng đi kế tiếp của cả lĩnh vực.
+
+### 17:35–18:00 · Intelligent Factories: The Next Industrial Revolution (Panel)
 **KS Pua** (Phison) · **Shalabh Bakshi** (Siemens) · điều phối: **Sophie Chiu** (AppWorks)
 AI đang biến sản xuất từ dây chuyền cố định thành **hệ thống thông minh, thích ứng**, nơi robot, dữ liệu và tự động hóa tái định hình năng suất ở quy mô công nghiệp.
 
@@ -114,13 +118,13 @@ AI tăng tốc các đột phá khoa học — ứng dụng AI vào nghiên cứ
 **Soo Lee** — Data and AI Evangelist, Snowflake
 AI doanh nghiệp phải chạy trên **dữ liệu đáng tin cậy** — vai trò của nền tảng dữ liệu cho AI.
 
-### 10:30–10:45 · Keynote (Sierra)
+### 10:30–10:45 · The AI Agent Iceberg (Keynote)
 **Damien Tampling** — Head of Strategy, Agent Development APAC, Sierra
-Chiến lược phát triển agent doanh nghiệp tại khu vực châu Á – Thái Bình Dương.
+Chiến lược phát triển agent doanh nghiệp tại khu vực châu Á – Thái Bình Dương — phần "chìm dưới mặt nước" của một AI agent.
 
-### 10:45–11:00 · Keynote (Alibaba Cloud)
+### 10:45–11:00 · The AI Shift: From Enterprise Systems to Intelligent Agents (Keynote)
 **Ken Xu** — Solutions Architect Director, Singapore, Alibaba Cloud
-Giải pháp hạ tầng/đám mây AI từ Alibaba Cloud.
+Dịch chuyển từ hệ thống doanh nghiệp truyền thống sang các agent thông minh — giải pháp hạ tầng/đám mây AI từ Alibaba Cloud.
 
 ### 11:00–11:30 · Shattering the AI Memory Wall: More Tokens, Lower Cost, Better AI (Keynote)
 **Val Bercovici** — Chief AI Officer, WEKA
@@ -146,9 +150,9 @@ Một nền tảng duy nhất cho agentic AI **từ đám mây tới biên (edge
 **Bo Bai** — Co-Founder & Chairman, MetaComp
 Tài chính nhúng kiểu agentic lai: **AI, stablecoin và tài sản thực token hóa (RWA)**.
 
-### 12:45–13:00 · Keynote (Sony Research)
+### 12:45–13:00 · Reinforcement Learning and the Next Generation of AI (Keynote)
 **Michael Spranger** — Senior Executive Director, Sony Research
-Nghiên cứu AI và physical AI từ Sony.
+Học tăng cường (reinforcement learning) và thế hệ AI tiếp theo — góc nhìn nghiên cứu từ Sony.
 
 ### 13:00–14:00 · Lunch
 
@@ -170,9 +174,10 @@ Cuộc thi startup do **OpenAI và Microsoft for Startups** tài trợ. Lịch c
 - 15:05 · **Aleph Lab** — Dan Han (CEO)
 - 15:10 · **NunoX Tech / NX Showroom** — Jac Hsieh (Founder & CEO)
 - 15:15 · **STUDIO LAB** — Sunghoon Kang (CEO)
-- 15:20 · **Solo Tech** — Dhruv Diddi (Founder & CEO)
+- 15:20 · **Solo Tech** — Varun Raghavendra (Open Source Lead)
 - 15:25 · **Morphic** — Joshua Sum (Founder & CEO)
 - 15:30 · **FORMAS AI** — Yiping Goh (Co-Founder & CEO)
+- 15:35 · **Wubble** — Anand Roy (Founder & CEO, Wubble.ai)
 - 15:40 · **Drylab AI** — John Phan (CEO)
 - 15:45 · **Yarken** — Ravi Kuppan (Co-Founder & CEO)
 - 15:50 · **Preveta** — Victor Lee (CEO)
@@ -182,13 +187,9 @@ Cuộc thi startup do **OpenAI và Microsoft for Startups** tài trợ. Lịch c
 **Ling Fan** — Chairman, MUSE AI
 "Mô hình thế giới chủ quan" — từ mô phỏng người tiêu dùng đến tăng trưởng kinh doanh kiểu agentic.
 
-### 16:15–16:30 · Multi Agent Systems in Production (Keynote)
-**Kye Gomez** — CEO, Swarms
-Triển khai **hệ thống đa agent (multi-agent)** trong môi trường production thực tế.
-
-### 16:30–16:45 · Open Source Must Win (Keynote)
-**Alex Cheema** — Co-Founder & CEO, EXO Labs
-Lập luận vì sao **mã nguồn mở phải thắng** trong cuộc đua AI.
+### 16:15–16:30 · Where AI Meets Web3 - One Gate to All AI (Keynote)
+**Edwin Cheung** — Global Head of Fiat and Strategic AI, Gate
+Nơi AI gặp Web3 — "một cổng" truy cập tới mọi AI.
 
 ### 16:45–17:00 · The AI-Native Firm: The New Economics of Building Companies (Keynote)
 **Hyunjin Kim** — Strategy Professor, INSEAD
@@ -201,6 +202,10 @@ Bằng chứng mới về cách AI thay đổi **những gì cần để xây d�
 ### 17:15–17:30 · The 85% Beyond the Model: Shipping Agentic AI in High-Stakes, Regulated Environments (Keynote)
 **Chirag Yagnik** — Co-Founder & Head of AI, Arta Finance
 "85% còn lại ngoài mô hình" — triển khai agentic AI trong môi trường rủi ro cao, bị quản lý chặt (tài chính).
+
+### 17:30–17:45 · Physical AI in a World of Humans (Keynote)
+**Devinder Sodhi** — Founder, Learning Layer Labs
+Physical AI trong một thế giới của con người — robot và hệ thống AI vật lý cùng tồn tại với người dùng.
 
 ---
 
@@ -242,8 +247,8 @@ Bằng chứng mới về cách AI thay đổi **những gì cần để xây d�
 ### 16:30–16:55 · Temporal: The Durable Operating System for Agentic AI
 *(Temporal)* — "Hệ điều hành bền bỉ" (durable execution) cho agentic AI.
 
-### 17:30–18:30 · The Path to Profitability: A Founder's Unfiltered Exchange
-*(Google)* — Con đường tới lợi nhuận: trao đổi thẳng thắn giữa các founder.
+### 17:30–18:30 · AI Innovators Happy Hour at Super AI
+*(Google)* — Giờ giao lưu (happy hour) dành cho các nhà đổi mới AI, do Google tổ chức.
 
 ---
 
@@ -273,7 +278,7 @@ Khi AI chuyển từ training sang triển khai thực tế, **inference trở t
 Cách Grab biến đổi đời sống hằng ngày khắp Đông Nam Á, làm AI trở nên hữu hình với **hàng trăm triệu người** trải nghiệm qua mỗi chuyến xe, bữa ăn, lần thanh toán mà không hề nhận ra.
 
 ### 11:10–11:50 · AI, Wearables and the New Health Operating System (Panel)
-**Ben Condon** (Heidi) · **Tanvi Jayaraman** (Oura) · **Max Marchione** (Superpower) · điều phối: **Peng T. Ong** (Elyx Life)
+**Ben Condon** (Heidi) · **Tanvi Jayaraman** (Oura) · **Max Marchione** (Superpower) · **Lorry Li** (CGO, Looki) · điều phối: **Peng T. Ong** (Elyx Life)
 AI đưa y tế từ điều trị phản ứng sang **chăm sóc luôn-bật, cá nhân hóa** — kết hợp dữ liệu thời gian thực, chẩn đoán và trí tuệ lâm sàng để tái định hình quan hệ bệnh nhân – bác sĩ.
 
 ### 11:50–12:30 · The Visual AI Stack (Panel)
@@ -292,19 +297,19 @@ AI đang **thu hẹp khoảng cách giữa ý tưởng, thiết kế, prototype 
 **Bernard Moon** (SparkLabs Group) · **Karan Mohla** (B Capital) · điều phối: **Selina Xu** (Office of Eric Schmidt)
 Từ Trung Quốc đến Thung lũng Silicon đến Đông Nam Á: cách **vốn, nhân tài và hệ sinh thái startup** đang định hình thế hệ công ty AI tiếp theo ở cả phương Đông lẫn phương Tây.
 
-### 15:10–15:40 · Data Infrastructure for the Agentic Web (Panel)
-**Or Lenchner** (Bright Data) · **Jeanie Fang** (Crunchbase)
-Hạ tầng dữ liệu cho "web của agent".
+### 15:10–15:40 · The 100x Company: Rebuilding the Business Around AI (Panel)
+**Hyunjin Kim** (INSEAD) · **Haydn Sallmann** (Google Cloud) · **Ang Li** (Simular) · điều phối: **Bernard Leong** (Dorje AI)
+AI trở thành **lớp trí tuệ bên trong công ty** — kết nối mọi workflow, tài liệu và tương tác khách hàng thành một hệ thống biết suy luận, học hỏi và hành động; hướng tới chuyển đổi tổ chức, đội ngũ nhanh hơn, ra quyết định tốt hơn, tăng trưởng cấp số nhân.
 
 ### 15:40–16:00 · Agentic Future of the Web: Within Reach or Cancelled? (Keynote)
 **Juras Juršėnas** — COO, Oxylabs
 "Web agentic" được kỳ vọng là giai đoạn tiến hóa kế tiếp của web — agent AI hoàn thành nhiều tác vụ online, tối ưu cả thói quen hằng ngày lẫn quy trình kinh doanh. Nhưng **web hôm nay là nơi thù địch với agent**: đầy bẫy và chướng ngại được dựng lên để đánh lừa agent. Trong khi "cuộc chiến dữ liệu" còn chưa ngã ngũ, agent của bạn vẫn có thể cần "bàn tay con người" để tồn tại.
 
-### 16:00–16:40 · The 100x Company: Rebuilding the Business Around AI (Panel)
-**Hyunjin Kim** (INSEAD) · **Haydn Sallmann** (Google Cloud) · **Ang Li** (Simular) · điều phối: **Bernard Leong** (Dorje AI)
-AI trở thành **lớp trí tuệ bên trong công ty** — kết nối mọi workflow, tài liệu và tương tác khách hàng thành một hệ thống biết suy luận, học hỏi và hành động; hướng tới chuyển đổi tổ chức, đội ngũ nhanh hơn, ra quyết định tốt hơn, tăng trưởng cấp số nhân.
+### 16:00–16:30 · The Real-Time Data Layer for AI Agents (Panel)
+**Brandon Chew** (Cohere) · **Gunja Gargeshwari** (CRO, Bright Data) · **Maruthi Lokanathan** (ClickHouse) · **Jeanie Fang** (Crunchbase)
+Lớp dữ liệu thời gian thực cho AI agent — đưa dữ liệu tươi, đáng tin cậy vào agent để chúng hành động chính xác.
 
-### 16:40–17:10 · Biointelligence: AI and the Future of Health (Panel)
+### 16:30–17:10 · Biointelligence: AI and the Future of Health (Panel)
 **Sophia Lugo** (Radar Therapeutics) · **Alex Aliper** (Insilico Medicine) · **Kingsley Leung** (Great Bay Bio) · điều phối: **Daniel Ting** (SingHealth AI Office)
 "Trí tuệ sinh học" — AI và tương lai của y tế, khám phá thuốc, công nghệ sinh học.
 
@@ -328,11 +333,17 @@ Phát biểu bế mạc.
 **Jinsong Xu** (Innowave Tech) · **Daniel Yu** (MetAI) · **Rahul Nambiar** (Botsync) · điều phối: **Sophie Chiu** (AppWorks)
 "Nhà máy tương lai" — cách AI tái định hình sản xuất chế tạo.
 
-### 10:00–10:15 · Keynote
+### 10:00–10:15 · Beyond Efficiency (Keynote)
 **Ned Koh** — Co-Founder & President, Aaru
+Vượt khỏi bài toán hiệu suất — góc nhìn từ đồng sáng lập & chủ tịch Aaru.
 
-### 10:15–10:30 · Keynote
+### 10:15–10:30 · Why Infrastructure Matters In An Agentic World (Keynote)
 **Timothy Wong** — Global VP, Data and AI, Airwallex
+Vì sao hạ tầng là yếu tố then chốt trong thế giới agentic — dữ liệu & AI trong fintech, góc nhìn Airwallex.
+
+### 10:30–11:00 · From Demo to Durable: Building AI Companies That Actually Scale (Fireside Chat)
+**Inian Parameshwaran** (Head of Product, Supabase) · **Ben Lu** (Head of Solutions Architecture Asia, Stripe)
+Từ demo đến bền vững: xây dựng công ty AI thực sự mở rộng được.
 
 ### 11:00–12:00 · Genesis Startup Competition — Vòng Chung kết
 - 11:00 · Welcome to the Genesis Startup Competition Final Round
@@ -343,17 +354,26 @@ Phát biểu bế mạc.
 - 11:45 · Genesis Final Round #5
 - 11:55 · Genesis Final Round Summary (Tổng kết chung kết)
 
-### 12:00–12:15 · Keynote
+### 12:00–12:15 · AI Through XR (Keynote)
 **Luis Ramirez** — Founder & CEO, Mawari
+AI thông qua thực tế mở rộng (XR).
 
 ### 12:15–12:30 · Current State of AI: Industry Constraints and AMD's Value Proposition (Keynote)
 **Sachin Hindupur** — Global Strategy & Ops Leader, AMD
 Hiện trạng AI: các ràng buộc của ngành và đề xuất giá trị của AMD.
 
-### 12:30–12:45 · Keynote
+### 12:30–12:45 · Navigating AI Transformation: Finding Your Path to Success (Keynote)
 **Geoff Soon** — VP of Revenue, APAC, Mistral
+Định hướng chuyển đổi AI: tìm con đường tới thành công.
+
+### 12:45–13:00 · Agentic Commerce: The New CX From Discovery to Execution (Keynote)
+**Oliver Tan** — Managing Director, Rezolve AI
+Thương mại kiểu agentic: trải nghiệm khách hàng mới từ khám phá đến thực thi.
 
 ### 13:00–14:00 · Lunch
+
+### 14:00–14:15 · Keynote (SenseTime International)
+**Zhongang Cai** — Principal Research Scientist, SenseTime International
 
 ### 14:15–14:30 · Seeing Past the Illusion of an AGI Windfall Mirage (Keynote)
 **Alvin W. Graylin** — Author, Stanford HAI
@@ -363,15 +383,25 @@ Các lãnh đạo thế giới đang ra quyết định sai lầm khiến kinh t
 **Brandon Chew** — Staff Solutions Architect, Cohere
 Cách Cohere giúp doanh nghiệp **tái hình dung vận hành và trải nghiệm khách hàng** qua các agent AI thông minh dựa trên LLM hiện đại để tạo ROI hữu hình.
 
-### 15:15–15:30 · Keynote
+### 14:45–15:15 · Tools and Roadmap for AI-Native Developers from Google (Workshop)
+**Manikantan Krishnamurthy** — Head of APAC, Developer Ecosystem, Google
+Công cụ và lộ trình dành cho lập trình viên AI-native từ Google.
+
+### 15:15–15:30 · Gen AI in Health: What's New in 2026? (Keynote)
 **Daniel Ting** — Associate Professor & Director, SingHealth AI Office
-(AI trong y tế.)
+Generative AI trong y tế — điều gì mới trong năm 2026?
 
-### 15:30–15:45 · Keynote
-**Chris Kerzich** — Senior VP
+### 15:30–15:45 · RexTrix AI and the End of Passive Entertainment (Keynote)
+**Chris Kerzich** — Senior VP, RexTrix
+RexTrix AI và hồi kết của giải trí thụ động.
 
-### 16:00–16:15 · Keynote
+### 15:45–16:00 · The Future of AI: Proactive Agents and a Living Brain (Keynote)
+**Christel Buchanan** — Founder & CEO, ChatAndBuild
+Tương lai của AI: agent chủ động và một "bộ não sống".
+
+### 16:00–16:15 · How AI is Enabling Healthcare's Biggest Blindspot - Preventive Care? (Keynote)
 **Sundeep Singh Sahni** — CEO, Valeo Health
+Cách AI giải bài toán "điểm mù" lớn nhất của y tế — chăm sóc dự phòng (preventive care).
 
 ### 16:15–16:45 · Agentic AI in Action: From Framework to Deployment (Panel)
 **Wan Sie Lee** (IMDA) · **Chong Kin Lim** (Drew & Napier) · **Howie Lau** · điều phối: **Zee Kin Yeong** (Singapore Academy of Law)
@@ -381,20 +411,24 @@ Agentic AI đi nhanh từ ý tưởng đến triển khai — hệ thống ngày
 **Alex Svanevik** — Co-Founder & CEO, Nansen
 Cách biến cả đội ngũ trở thành "AI-native".
 
-### 17:00–17:15 · Keynote
+### 17:00–17:15 · Tokenization and Agents: Why It Matters (Keynote)
 **Yat Siu** — Co-Founder & Executive Chairman, Animoca Brands
+Token hóa và agent: vì sao điều đó quan trọng.
 
 ### 17:15–17:30 · Strange New Bodies: Design Beyond Robots (Keynote)
 **Savannah Kunovsky** — Managing Director, IDEO
 "Những cơ thể mới lạ" — thiết kế vượt ra ngoài khái niệm robot truyền thống.
 
-### 17:30–18:00 · NEXT Hackathon — Demo Chung kết & Trao giải
+### 17:30–18:00 · NEXT Hackathon — Demo Chung kết
 - 17:30 · Welcome to the NEXT Hackathon Finalist Demos
 - 17:35 · NEXT Hackathon Finalist Demos #1
 - 17:40 · NEXT Hackathon Finalist Demos #2
 - 17:45 · NEXT Hackathon Finalist Demos #3
 - 17:50 · NEXT Hackathon Finalist Demos #4
-- 17:55 · NEXT Hackathon Summary and Prize Presentation (Tổng kết & trao giải)
+- 17:55 · NEXT Hackathon Finalist Demos #5
+
+### 18:00–18:30 · NEXT Hackathon — Summary and Prize Presentation (Tổng kết & Trao giải)
+Tổng kết hackathon và trao giải (prize presentation).
 
 ---
 
@@ -419,7 +453,7 @@ Cách biến cả đội ngũ trở thành "AI-native".
 *(NetNut)* — "Cỗ máy dữ liệu AI 360°".
 
 ### 13:00–13:55 · Built for Agents: The Infrastructure Powering the AI Economy
-Hạ tầng được thiết kế cho agent, tiếp sức cho nền kinh tế AI.
+*(0G)* — Hạ tầng được thiết kế cho agent, tiếp sức cho nền kinh tế AI.
 
 ### 14:00–14:25 · Defining the AI-Native Investing Platform
 *(Longbridge)* — Định nghĩa nền tảng đầu tư AI-native.
@@ -432,6 +466,9 @@ Hạ tầng được thiết kế cho agent, tiếp sức cho nền kinh tế AI
 
 ### 15:30–15:55 · AI is Already Running Your Marketing. Is It Running It Right?
 *(Klaviyo)* — AI đã đang vận hành marketing của bạn — nhưng có đúng cách không?
+
+### 16:00–16:25 · The Transformation Paradox: How Enterprises Move Fast with AI Without Breaking Trust
+*(Formi)* — "Nghịch lý chuyển đổi": làm sao doanh nghiệp tiến nhanh với AI mà không đánh mất niềm tin.
 
 ### 16:30–16:55 · TGB AI Village — Founder Spotlight
 *(The Generative Beings)* — Điểm sáng các founder tại "AI Village".
