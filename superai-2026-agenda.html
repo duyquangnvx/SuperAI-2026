@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SuperAI 2026 · Lịch trình</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Schibsted+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#07080b;
+    --ink-2:#0d0f15;
+    --panel:#11141d;
+    --panel-2:#161a25;
+    --line:rgba(255,255,255,.09);
+    --line-2:rgba(255,255,255,.14);
+    --txt:#ece9e1;
+    --txt-dim:#9aa0ad;
+    --txt-faint:#6a7080;
+    /* stage accents */
+    --plaud:#f5b53d;     /* amber */
+    --weka:#46e0d0;      /* cyan */
+    --forum:#ff5d9e;     /* rose */
+    --plaud-soft:rgba(245,181,61,.13);
+    --weka-soft:rgba(70,224,208,.12);
+    --forum-soft:rgba(255,93,158,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--txt);
+    font-family:'Schibsted Grotesk',sans-serif;
+    font-size:16px;line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  /* atmospheric background */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(900px 600px at 12% -5%, rgba(245,181,61,.10), transparent 60%),
+      radial-gradient(900px 700px at 92% 8%, rgba(70,224,208,.09), transparent 60%),
+      radial-gradient(1000px 800px at 60% 110%, rgba(255,93,158,.07), transparent 60%);
+  }
+  body::after{ /* grain */
+    content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:0 24px}
+
+  /* ===== HERO ===== */
+  header.hero{padding:64px 0 30px;position:relative}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--txt-faint);display:flex;gap:14px;align-items:center;flex-wrap:wrap;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--weka);box-shadow:0 0 12px var(--weka)}
+  h1{
+    font-family:'Instrument Serif',serif;font-weight:400;
+    font-size:clamp(56px,11vw,140px);line-height:.92;letter-spacing:-.01em;
+    margin:18px 0 6px;
+  }
+  h1 em{font-style:italic;color:transparent;
+    background:linear-gradient(92deg,var(--plaud),var(--forum) 55%,var(--weka));
+    -webkit-background-clip:text;background-clip:text;}
+  .lede{max-width:560px;color:var(--txt-dim);font-size:18px;margin-top:14px}
+  .meta-row{display:flex;gap:30px;flex-wrap:wrap;margin-top:26px;
+    font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--txt-dim)}
+  .meta-row b{color:var(--txt);font-weight:600}
+  .meta-row span{display:flex;flex-direction:column;gap:3px}
+  .meta-row .k{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--txt-faint)}
+
+  /* ===== STICKY CONTROLS ===== */
+  .controls{
+    position:sticky;top:0;z-index:30;margin-top:40px;
+    backdrop-filter:blur(16px);
+    background:linear-gradient(180deg,rgba(7,8,11,.92),rgba(7,8,11,.7));
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .controls-inner{max-width:1180px;margin:0 auto;padding:14px 24px;
+    display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+  .day-toggle{display:inline-flex;border:1px solid var(--line-2);border-radius:999px;padding:3px;background:var(--ink-2)}
+  .day-toggle button{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;
+    background:none;border:none;color:var(--txt-dim);padding:9px 18px;border-radius:999px;cursor:pointer;
+    transition:.25s;white-space:nowrap;
+  }
+  .day-toggle button .d{font-size:10px;color:var(--txt-faint);display:block;letter-spacing:.18em}
+  .day-toggle button.active{background:var(--txt);color:var(--ink)}
+  .day-toggle button.active .d{color:rgba(7,8,11,.55)}
+
+  .filters{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.05em;
+    border:1px solid var(--line-2);background:transparent;color:var(--txt-dim);
+    padding:8px 14px;border-radius:999px;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:7px;
+  }
+  .chip .sw{width:8px;height:8px;border-radius:2px}
+  .chip[data-stage="all"].active{background:var(--txt);color:var(--ink);border-color:var(--txt)}
+  .chip[data-stage="plaud"] .sw{background:var(--plaud)}
+  .chip[data-stage="weka"] .sw{background:var(--weka)}
+  .chip[data-stage="forum"] .sw{background:var(--forum)}
+  .chip[data-stage="plaud"].active{border-color:var(--plaud);background:var(--plaud-soft);color:var(--plaud)}
+  .chip[data-stage="weka"].active{border-color:var(--weka);background:var(--weka-soft);color:var(--weka)}
+  .chip[data-stage="forum"].active{border-color:var(--forum);background:var(--forum-soft);color:var(--forum)}
+
+  .search{margin-left:auto;position:relative;flex:1;min-width:200px;max-width:320px}
+  .search input{
+    width:100%;background:var(--ink-2);border:1px solid var(--line-2);border-radius:999px;
+    color:var(--txt);font-family:'IBM Plex Mono',monospace;font-size:12.5px;
+    padding:10px 16px 10px 38px;outline:none;transition:.2s;
+  }
+  .search input:focus{border-color:var(--weka);box-shadow:0 0 0 3px var(--weka-soft)}
+  .search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);opacity:.5}
+
+  .count{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--txt-faint);letter-spacing:.1em;padding:14px 0 2px}
+
+  /* ===== SCHEDULE ===== */
+  .schedule{padding:14px 0 90px}
+  .session{
+    display:grid;grid-template-columns:96px 1fr;gap:0;
+    border-bottom:1px solid var(--line);
+    opacity:0;transform:translateY(14px);
+    animation:rise .5s cubic-bezier(.2,.7,.3,1) forwards;
+  }
+  @keyframes rise{to{opacity:1;transform:none}}
+  .session .time{
+    font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--txt-dim);
+    padding:22px 18px 22px 0;text-align:right;border-right:1px solid var(--line);
+    white-space:nowrap;
+  }
+  .session .time .end{display:block;color:var(--txt-faint);font-size:11px;margin-top:3px}
+  .session .body{padding:20px 8px 20px 22px;position:relative;transition:.25s}
+  .session .body::before{ /* stage spine */
+    content:"";position:absolute;left:0;top:18px;bottom:18px;width:3px;border-radius:2px;
+    background:var(--accent);opacity:.85;transition:.25s;
+  }
+  .session:hover .body{background:linear-gradient(90deg,var(--accent-soft),transparent 70%)}
+  .session:hover .body::before{top:8px;bottom:8px;box-shadow:0 0 14px var(--accent)}
+
+  .s-top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:7px}
+  .badge{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+    padding:4px 9px;border-radius:5px;color:var(--accent);background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent)}
+  .type{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--txt-faint)}
+  .s-title{font-size:20px;font-weight:600;line-height:1.22;letter-spacing:-.01em}
+  .s-title.break{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--txt-dim);font-size:22px}
+  .speaker{margin-top:8px;font-size:14px;color:var(--txt)}
+  .speaker b{font-weight:600}
+  .speaker .org{color:var(--txt-faint)}
+  .desc{margin-top:9px;font-size:14.5px;color:var(--txt-dim);max-width:740px;line-height:1.55}
+
+  .session[data-stage="plaud"]{--accent:var(--plaud);--accent-soft:var(--plaud-soft)}
+  .session[data-stage="weka"]{--accent:var(--weka);--accent-soft:var(--weka-soft)}
+  .session[data-stage="forum"]{--accent:var(--forum);--accent-soft:var(--forum-soft)}
+  .session[data-stage="general"]{--accent:var(--txt-faint);--accent-soft:rgba(255,255,255,.04)}
+  .session.break{opacity:.62}
+  .session.break .body{padding-top:14px;padding-bottom:14px}
+
+  .empty{padding:80px 0;text-align:center;color:var(--txt-faint);
+    font-family:'Instrument Serif',serif;font-style:italic;font-size:26px}
+
+  footer{border-top:1px solid var(--line);padding:34px 0 60px;color:var(--txt-faint);
+    font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.9}
+  footer a{color:var(--weka);text-decoration:none}
+  footer a:hover{text-decoration:underline}
+
+  @media(max-width:640px){
+    .session{grid-template-columns:64px 1fr}
+    .session .time{padding-right:12px;font-size:11.5px}
+    .session .body{padding-left:16px}
+    .s-title{font-size:17px}
+    h1{font-size:clamp(46px,16vw,90px)}
+    .search{margin-left:0;max-width:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow"><span class="dot"></span> Asia's Largest AI Conference · Marina Bay Sands</div>
+    <h1>Super<em>AI</em><br>2026</h1>
+    <p class="lede">Lịch trình đầy đủ các session, chia theo từng sân khấu. Lọc theo ngày, sân khấu hoặc tìm kiếm theo tên session &amp; diễn giả.</p>
+    <div class="meta-row">
+      <span><i class="k">Ngày</i><b>10–11 / 06 / 2026</b></span>
+      <span><i class="k">Địa điểm</i><b>Marina Bay Sands, SG</b></span>
+      <span><i class="k">Quy mô</i><b>10.000+ người · 150+ diễn giả</b></span>
+      <span><i class="k">Sân khấu</i><b>Plaud Main · WEKA · The Forum</b></span>
+    </div>
+  </header>
+</div>
+
+<div class="controls">
+  <div class="controls-inner">
+    <div class="day-toggle" id="dayToggle">
+      <button data-day="1" class="active"><span class="d">THỨ TƯ</span>Ngày 1 · 10/06</button>
+      <button data-day="2"><span class="d">THỨ NĂM</span>Ngày 2 · 11/06</button>
+    </div>
+    <div class="filters" id="filters">
+      <button class="chip active" data-stage="all">Tất cả</button>
+      <button class="chip" data-stage="plaud"><span class="sw"></span>Plaud Main</button>
+      <button class="chip" data-stage="weka"><span class="sw"></span>WEKA</button>
+      <button class="chip" data-stage="forum"><span class="sw"></span>The Forum</button>
+    </div>
+    <div class="search">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+      <input id="search" type="text" placeholder="Tìm session, diễn giả, công ty…">
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="count" id="count"></div>
+  <div class="schedule" id="schedule"></div>
+
+  <footer>
+    Nguồn: <a href="https://www.superai.com/agenda" target="_blank">superai.com/agenda</a> · <a href="https://www.superai.com/speakers" target="_blank">speakers</a><br>
+    Genesis Startup Competition (OpenAI &amp; Microsoft for Startups) và NEXT Hackathon diễn ra trên WEKA Stage.<br>
+    Một số keynote ngắn trên trang chính thức chưa công bố mô tả; phần tóm tắt được suy ra từ tiêu đề &amp; diễn giả. Lịch có thể thay đổi nhẹ.
+  </footer>
+</div>
+
+<script>
+const DATA = [
+ // ===== DAY 1 — PLAUD =====
+ {day:1,stage:"general",t:"07:30",e:"09:00",type:"",title:"Continental Breakfast",brk:1,sp:"",org:"",desc:"Đăng ký, nhận thẻ và ăn sáng trước giờ khai mạc."},
+ {day:1,stage:"plaud",t:"09:00",e:"09:10",type:"Opening",title:"Welcome to the Future: SuperAI 2026",sp:"",org:"",desc:"Phát biểu khai mạc, định hướng chủ đề cho hai ngày hội nghị."},
+ {day:1,stage:"plaud",t:"09:10",e:"09:30",type:"Keynote",title:"Personal, Private, Programmable",sp:"Balaji Srinivasan",org:"The Network State",desc:"Ba trụ cột của bối cảnh công nghệ mới: AI trở nên cá nhân hóa, phần mềm có thể lập trình bởi bất kỳ ai, và quyền riêng tư trở thành biên giới định hình tương lai."},
+ {day:1,stage:"plaud",t:"09:30",e:"09:50",type:"Keynote",title:"AI Eats the World",sp:"Benedict Evans",org:"Analyst",desc:"AI định hình lại phần mềm, doanh nghiệp và thị trường — điều gì xảy ra khi trí tuệ trở thành một lớp nền tảng xuyên suốt nền kinh tế."},
+ {day:1,stage:"plaud",t:"09:50",e:"10:30",type:"Panel",title:"The Global Frontier of AI Models",sp:"V. Maladière, C. Shi, H. Mohapatra · đ.phối Zixuan Li",org:"Mistral · MiniMax · Lightspeed · Z.ai",desc:"Frontier model trở thành lớp nền cho chu kỳ công nghệ kế tiếp: điều gì quan trọng ngoài benchmark, và làn sóng năng lực mới định hình lại 'AI stack' toàn cầu ra sao."},
+ {day:1,stage:"plaud",t:"10:30",e:"10:50",type:"Keynote",title:"Enabling AI Agents to Discover the Web in Real Time",sp:"Or Lenchner",org:"Bright Data",desc:"Agent chỉ tốt bằng những gì chúng 'nhìn thấy'; bị chặn hay dùng dữ liệu cũ sẽ ra quyết định sai một cách tự tin. Trao cho agent 'đôi mắt' thời gian thực, đáng tin cậy."},
+ {day:1,stage:"plaud",t:"10:50",e:"11:30",type:"Panel",title:"Robotics and the Rise of Physical AI",sp:"Y. Zhang, M. Spranger, A. Ng · đ.phối Lian Jye Su",org:"Weston Robot · Sony · QuikBot · Omdia",desc:"Robotics là biên giới lớn kế tiếp của AI — máy móc vượt qua dự đoán/sinh nội dung để hành động trong thế giới vật lý, với hệ quả cho năng suất, lao động và xã hội."},
+ {day:1,stage:"plaud",t:"11:30",e:"11:50",type:"Keynote",title:"How to Build a Pro-Human Future with AI?",sp:"Max Tegmark",org:"MIT",desc:"Làm sao xã hội nắm bắt lợi ích phi thường của AI trong khi tránh các rủi ro khi hệ thống ngày càng mạnh và tự chủ."},
+ {day:1,stage:"plaud",t:"11:50",e:"12:30",type:"Panel",title:"Compute, Chips and the Cost of Intelligence",sp:"E. Conrad, C. Li, V. Bercovici · đ.phối Anand Iyer",org:"SF Compute · Silicon Data · WEKA · Canonical",desc:"Compute đã thành 'nền công nghiệp' của AI: chip, data center, lưu trữ và kinh tế hạ tầng đứng sau cuộc đua sản xuất trí tuệ ở quy mô lớn."},
+ {day:1,stage:"plaud",t:"12:30",e:"13:00",type:"Keynote",title:"Lossless Context: Capturing Human Intent Through the Missing AI Interface",sp:"Nathan Xu",org:"Plaud",desc:"AI hôm nay vẫn 'chạy input thập niên 1980 trên con người 2026'. Câu hỏi cốt lõi: bạn cho agent ăn dữ liệu gì? Hội thoại là dạng trí tuệ thô sơ, giàu ngữ cảnh nhất."},
+ {day:1,stage:"general",t:"13:00",e:"14:00",type:"",title:"Lunch",brk:1,sp:"",org:"",desc:""},
+ {day:1,stage:"plaud",t:"14:00",e:"14:40",type:"Panel",title:"Turning AI Ambition into Business Value at Scale",sp:"C. Jotikasthira, R. Fleming +",org:"Bangkok Bank · Bain & Company",desc:"Biến tham vọng AI thành giá trị kinh doanh thực tế ở quy mô lớn — từ chiến lược đến triển khai."},
+ {day:1,stage:"plaud",t:"14:40",e:"15:00",type:"Keynote",title:"Inside the Rising AI Economy",sp:"Abhi Tiwari",org:"Stripe",desc:"Cách doanh nghiệp AI-native, agent và mô hình phần mềm mới đang thay đổi cách công ty xây dựng, bán hàng, giao dịch và mở rộng toàn cầu."},
+ {day:1,stage:"plaud",t:"15:00",e:"15:20",type:"Keynote",title:"The Imperative for Faster Inference",sp:"Andy Hock",org:"Cerebras Systems",desc:"Khi AI thành agent tự chủ viết code, tự động hóa quy trình hàng giờ/ngày không giám sát, ràng buộc lớn nhất là tốc độ. Inference nhanh = cộng tác viên tương tác, luôn bật."},
+ {day:1,stage:"plaud",t:"15:20",e:"15:40",type:"Keynote",title:"Planetary Intelligence",sp:"Robbie Schingler",org:"Planet Labs",desc:"AI, vệ tinh và dữ liệu thời gian thực tạo ra một lớp trí tuệ mới để hiểu hành tinh ở quy mô chưa từng có."},
+ {day:1,stage:"plaud",t:"15:40",e:"16:20",type:"Panel",title:"From Models to Products: Scaling AI Globally",sp:"A. Teng, K. Yang, C. Zhou · đ.phối Grace Shao",org:"StepFun · BytePlus · Tencent Cloud · AI Proem",desc:"Hệ sinh thái AI Trung Quốc mở rộng ra toàn cầu, thách thức giả định về nơi sinh ra các nền tảng AI tiếp theo — từ mô hình nền tới app tiêu dùng và công cụ doanh nghiệp."},
+ {day:1,stage:"plaud",t:"16:20",e:"16:40",type:"Keynote",title:"Perfect Search for a World of Agents",sp:"Will Bryk",org:"Exa",desc:"Khi agent tìm kiếm ở quy mô vượt xa con người, hạ tầng tri thức được tái cấu trúc để cấp thông tin đầy đủ, chính xác trong mili-giây cho cả AI lẫn người."},
+ {day:1,stage:"plaud",t:"16:40",e:"17:00",type:"Keynote",title:"The Human Side of Agents",sp:"Moe Abdula",org:"Google Cloud",desc:"Khía cạnh con người của agent: cách con người và agent phối hợp, tin tưởng và quản trị trong doanh nghiệp."},
+ {day:1,stage:"plaud",t:"17:30",e:"18:00",type:"Panel",title:"Intelligent Factories: The Next Industrial Revolution",sp:"KS Pua, S. Bakshi · đ.phối Sophie Chiu",org:"Phison · Siemens · AppWorks",desc:"AI biến sản xuất từ dây chuyền cố định thành hệ thống thông minh, thích ứng — robot, dữ liệu và tự động hóa tái định hình năng suất ở quy mô công nghiệp."},
+ {day:1,stage:"general",t:"18:00",e:"19:30",type:"",title:"Networking Drinks",brk:1,sp:"",org:"Oxylabs",desc:"Giao lưu cuối ngày."},
+
+ // ===== DAY 1 — WEKA =====
+ {day:1,stage:"weka",t:"09:45",e:"10:00",type:"Keynote",title:"Dreamina Seedance 2.0: From Frontier Models to AI-Native Enterprises",sp:"Kan Yang",org:"BytePlus",desc:"Mô hình SOTA của ByteDance ứng dụng xuyên ngành (công nghệ sau Dreamina Seedance 2.0, multimodal AI) + điều kiện áp dụng AI quy mô lớn: use-case agent, agent governance, tổ chức AI-native."},
+ {day:1,stage:"weka",t:"10:00",e:"10:15",type:"Keynote",title:"AI for Science: Accelerating Scientific Breakthroughs",sp:"Ramine Tinati",org:"Google DeepMind",desc:"AI tăng tốc các đột phá khoa học — ứng dụng AI vào nghiên cứu khoa học."},
+ {day:1,stage:"weka",t:"10:15",e:"10:30",type:"Keynote",title:"Enterprise AI Runs on Trusted Data",sp:"Soo Lee",org:"Snowflake",desc:"AI doanh nghiệp phải chạy trên dữ liệu đáng tin cậy — vai trò của nền tảng dữ liệu cho AI."},
+ {day:1,stage:"weka",t:"10:30",e:"10:45",type:"Keynote",title:"Keynote (Sierra)",sp:"Damien Tampling",org:"Sierra",desc:"Chiến lược phát triển agent doanh nghiệp tại khu vực châu Á – Thái Bình Dương."},
+ {day:1,stage:"weka",t:"10:45",e:"11:00",type:"Keynote",title:"Keynote (Alibaba Cloud)",sp:"Ken Xu",org:"Alibaba Cloud",desc:"Giải pháp hạ tầng & đám mây AI từ Alibaba Cloud."},
+ {day:1,stage:"weka",t:"11:00",e:"11:30",type:"Keynote",title:"Shattering the AI Memory Wall: More Tokens, Lower Cost, Better AI",sp:"Val Bercovici",org:"WEKA",desc:"Phá vỡ 'bức tường bộ nhớ' của AI: nhiều token hơn, chi phí thấp hơn, AI tốt hơn — tối ưu hạ tầng lưu trữ/bộ nhớ cho inference."},
+ {day:1,stage:"weka",t:"11:30",e:"11:45",type:"Keynote",title:"Arm: One Platform for Agentic AI, from Cloud to the Edge",sp:"Shantu Roy",org:"Arm",desc:"Một nền tảng duy nhất cho agentic AI từ đám mây tới biên (edge)."},
+ {day:1,stage:"weka",t:"11:45",e:"12:00",type:"Keynote",title:"The New Web Is Agentic. Is Your Infrastructure Ready?",sp:"Nonny Bell",org:"Vercel",desc:"Agent là 'primitive' mới của web — hệ thống tự hành động, tự quyết định, tự ship. Những quyết định hạ tầng, nền tảng dữ liệu và kiến trúc tách biệt đội thắng với đội còn loay hoay."},
+ {day:1,stage:"weka",t:"12:00",e:"12:15",type:"Keynote",title:"AI Sprawl: The Hidden Risk Threatening Your Enterprise Now",sp:"Richard Davies",org:"Airia",desc:"'AI sprawl' — rủi ro tiềm ẩn khi AI lan tràn không kiểm soát trong doanh nghiệp."},
+ {day:1,stage:"weka",t:"12:15",e:"12:30",type:"Keynote",title:"Your Agent Stack Is Broken at the Bottom",sp:"Maruthi Lokanathan",org:"ClickHouse",desc:"'Agent stack của bạn đang hỏng từ tầng đáy' — vai trò của lớp dữ liệu/database cho agent."},
+ {day:1,stage:"weka",t:"12:30",e:"12:45",type:"Keynote",title:"Hybrid Agentic Embedded Finance: AI, Stablecoins and RWAs",sp:"Bo Bai",org:"MetaComp",desc:"Tài chính nhúng kiểu agentic lai: AI, stablecoin và tài sản thực token hóa (RWA)."},
+ {day:1,stage:"weka",t:"12:45",e:"13:00",type:"Keynote",title:"Keynote (Sony Research)",sp:"Michael Spranger",org:"Sony Research",desc:"Nghiên cứu AI và physical AI từ Sony."},
+ {day:1,stage:"general",t:"13:00",e:"14:00",type:"",title:"Lunch",brk:1,sp:"",org:"",desc:""},
+ {day:1,stage:"weka",t:"14:00",e:"14:15",type:"Keynote",title:"Synthetic Hires: Integrating High-Context Agents in the Critical Path",sp:"Hrishi Olickel",org:"Southbridge AI",desc:"Vấn đề của AI 2026 không phải mua công cụ mà là ngăn chúng tạo rác và làm hỏng thứ đang chạy tốt: connector dữ liệu first-mile, SOP thực thi bằng AI, tích hợp vào cơ cấu hiện có."},
+ {day:1,stage:"weka",t:"14:15",e:"14:30",type:"Keynote",title:"Efficient Foundation Models for the Agentic Era",sp:"Ailing Teng",org:"StepFun",desc:"Mô hình nền tảng phải nhanh hơn, đáng tin hơn, hiệu quả hơn khi triển khai quy mô lớn — tiến bộ về kiến trúc mô hình và hệ thống inference."},
+ {day:1,stage:"weka",t:"14:45",e:"15:00",type:"Keynote",title:"How the World's Largest Sovereign Wealth Fund Uses AI",sp:"Oscar Hjelde",org:"Norges Bank Investment Mgmt",desc:"Cách quỹ đầu tư quốc gia lớn nhất thế giới (Na Uy) ứng dụng AI."},
+ {day:1,stage:"weka",t:"15:00",e:"16:00",type:"Genesis",title:"Genesis Startup Competition — Vòng 1",sp:"Aleph Lab · NunoX · STUDIO LAB · Solo Tech · Morphic · FORMAS AI · Drylab AI · Yarken · Preveta",org:"powered by OpenAI & Microsoft for Startups",desc:"Vòng 1 cuộc thi startup AI: 9 đội pitch (mỗi suất ~5 phút) trước founder, nhà đầu tư và lãnh đạo doanh nghiệp."},
+ {day:1,stage:"weka",t:"16:00",e:"16:15",type:"Keynote",title:"The Subjective World Model — From Consumer Simulation to Agentic Business Growth",sp:"Ling Fan",org:"MUSE AI",desc:"'Mô hình thế giới chủ quan' — từ mô phỏng người tiêu dùng đến tăng trưởng kinh doanh kiểu agentic."},
+ {day:1,stage:"weka",t:"16:15",e:"16:30",type:"Keynote",title:"Multi Agent Systems in Production",sp:"Kye Gomez",org:"Swarms",desc:"Triển khai hệ thống đa agent (multi-agent) trong môi trường production thực tế."},
+ {day:1,stage:"weka",t:"16:30",e:"16:45",type:"Keynote",title:"Open Source Must Win",sp:"Alex Cheema",org:"EXO Labs",desc:"Lập luận vì sao mã nguồn mở phải thắng trong cuộc đua AI."},
+ {day:1,stage:"weka",t:"16:45",e:"17:00",type:"Keynote",title:"The AI-Native Firm: The New Economics of Building Companies",sp:"Hyunjin Kim",org:"INSEAD",desc:"Bằng chứng mới về cách AI thay đổi những gì cần để xây dựng, tổ chức và mở rộng công ty."},
+ {day:1,stage:"weka",t:"17:00",e:"17:15",type:"Keynote",title:"One Society, or Two? The Age of Autonomous Computers",sp:"Ang Li",org:"Simular",desc:"'Một xã hội, hay hai?' — kỷ nguyên của máy tính tự hành và hệ quả xã hội."},
+ {day:1,stage:"weka",t:"17:15",e:"17:30",type:"Keynote",title:"The 85% Beyond the Model: Shipping Agentic AI in High-Stakes, Regulated Environments",sp:"Chirag Yagnik",org:"Arta Finance",desc:"'85% còn lại ngoài mô hình' — triển khai agentic AI trong môi trường rủi ro cao, bị quản lý chặt (tài chính)."},
+
+ // ===== DAY 1 — FORUM =====
+ {day:1,stage:"forum",t:"09:30",e:"10:25",type:"Sponsor",title:"OpenClaw x AWS: From Prototype to Production — Building Safe AI Agents",sp:"",org:"OpenClaw",desc:"Từ prototype đến production: xây dựng AI agent an toàn trên AWS."},
+ {day:1,stage:"forum",t:"10:30",e:"10:55",type:"Sponsor",title:"The Infrastructure Behind Agentic AI: Storage, Speed, and the Economics of Inference at Scale",sp:"",org:"TuringData",desc:"Hạ tầng đằng sau agentic AI: lưu trữ, tốc độ và kinh tế inference ở quy mô lớn."},
+ {day:1,stage:"forum",t:"11:00",e:"11:25",type:"Sponsor",title:"Building Enterprise AI Infrastructure for the Next AI Era",sp:"",org:"Altos",desc:"Xây dựng hạ tầng AI doanh nghiệp cho kỷ nguyên AI tiếp theo."},
+ {day:1,stage:"forum",t:"11:30",e:"11:55",type:"Sponsor",title:"From SaaS to Source: Building Agent-Native Tooling Directly on the Web",sp:"",org:"Bright Data",desc:"Từ SaaS đến 'source': xây công cụ agent-native trực tiếp trên web."},
+ {day:1,stage:"forum",t:"12:00",e:"12:55",type:"Sponsor",title:"AI in Snowflake: From Platform to Production-Grade Agents",sp:"",org:"Snowflake",desc:"Từ nền tảng dữ liệu đến agent cấp production trên Snowflake."},
+ {day:1,stage:"forum",t:"13:00",e:"13:25",type:"Sponsor",title:"Four Places AI Breaks Before You Touch It",sp:"",org:"Oxylabs",desc:"Bốn điểm AI 'gãy' trước cả khi bạn chạm vào (các điểm thất bại tiềm ẩn)."},
+ {day:1,stage:"forum",t:"13:30",e:"13:55",type:"Sponsor",title:"Beyond the Buzz: Navigating the Real Journey of Enterprise AI Transformation with Dify",sp:"",org:"Dify",desc:"Hành trình chuyển đổi AI doanh nghiệp thực sự, vượt khỏi sự hào nhoáng."},
+ {day:1,stage:"forum",t:"14:00",e:"14:25",type:"Sponsor",title:"Accelerating On-Device AI with Arm KleidiAI and SME2",sp:"",org:"Arm",desc:"Tăng tốc AI trên thiết bị với Arm KleidiAI và SME2."},
+ {day:1,stage:"forum",t:"14:30",e:"15:25",type:"Sponsor",title:"Your AI Agent Is Only as Good as Its Inference Layer",sp:"",org:"FriendliAI",desc:"Agent của bạn chỉ tốt bằng lớp inference của nó."},
+ {day:1,stage:"forum",t:"15:30",e:"15:55",type:"Sponsor",title:"Global Growth, Simplified: Unlocking Cross-Border Revenue for AI Companies",sp:"",org:"FastSpring",desc:"Mở khóa doanh thu xuyên biên giới cho công ty AI."},
+ {day:1,stage:"forum",t:"16:00",e:"16:25",type:"Sponsor",title:"The Doctor Will See You Now — Because AI Gave Them the Time",sp:"",org:"Heidi Health",desc:"AI trả lại thời gian cho bác sĩ để chăm sóc bệnh nhân."},
+ {day:1,stage:"forum",t:"16:30",e:"16:55",type:"Sponsor",title:"Temporal: The Durable Operating System for Agentic AI",sp:"",org:"Temporal",desc:"'Hệ điều hành bền bỉ' (durable execution) cho agentic AI."},
+ {day:1,stage:"forum",t:"17:30",e:"18:30",type:"Sponsor",title:"The Path to Profitability: A Founder's Unfiltered Exchange",sp:"",org:"Google",desc:"Con đường tới lợi nhuận: trao đổi thẳng thắn giữa các founder."},
+
+ // ===== DAY 2 — PLAUD =====
+ {day:2,stage:"general",t:"07:30",e:"09:00",type:"",title:"Continental Breakfast",brk:1,sp:"",org:"",desc:""},
+ {day:2,stage:"plaud",t:"09:00",e:"09:10",type:"Opening",title:"Day 2 Kickoff",sp:"",org:"",desc:"Khai mạc ngày 2."},
+ {day:2,stage:"plaud",t:"09:10",e:"09:50",type:"Panel",title:"Building Asia's AI Infrastructure",sp:"F. Scopeta, M. Kumar, M. Abdula · đ.phối Vinayak HV",org:"Microsoft · Singtel · Google Cloud · McKinsey",desc:"Lớp hạ tầng sau công cuộc xây dựng AI của châu Á — từ nhu cầu compute, data center thế hệ mới, đến cloud, kết nối và triển khai quy mô quốc gia."},
+ {day:2,stage:"plaud",t:"09:50",e:"10:10",type:"Fireside",title:"Gaming x AI: The Next Consumer Frontier",sp:"Min-Liang Tan · đ.phối Joanna Ossinger",org:"Razer · CNBC",desc:"Vì sao gaming có thể thành biên giới tiêu dùng đột phá của AI — thiết bị thông minh hơn, gameplay thích ứng, trải nghiệm người chơi hoàn toàn mới."},
+ {day:2,stage:"plaud",t:"10:10",e:"10:50",type:"Panel",title:"The New AI Bottleneck: Inference at Scale",sp:"A. Hock, S. Roy, B-G. Chun · đ.phối Kate Park",org:"Cerebras · Arm · FriendliAI · TechCrunch",desc:"Khi AI chuyển từ training sang triển khai thực tế, inference thành nút thắt cổ chai quyết định: chi phí, độ trễ, thông lượng và hạ tầng phục vụ trí tuệ ở quy mô toàn cầu."},
+ {day:2,stage:"plaud",t:"10:50",e:"11:10",type:"Keynote",title:"AI for the Next Billion",sp:"Philipp Kandal",org:"Grab",desc:"Cách Grab biến đổi đời sống khắp Đông Nam Á, làm AI hữu hình với hàng trăm triệu người qua mỗi chuyến xe, bữa ăn, lần thanh toán mà không hề nhận ra."},
+ {day:2,stage:"plaud",t:"11:10",e:"11:50",type:"Panel",title:"AI, Wearables and the New Health Operating System",sp:"B. Condon, T. Jayaraman, M. Marchione · đ.phối Peng T. Ong",org:"Heidi · Oura · Superpower · Elyx Life",desc:"AI đưa y tế từ điều trị phản ứng sang chăm sóc luôn-bật, cá nhân hóa — kết hợp dữ liệu thời gian thực, chẩn đoán và trí tuệ lâm sàng, tái định hình quan hệ bệnh nhân–bác sĩ."},
+ {day:2,stage:"plaud",t:"11:50",e:"12:30",type:"Panel",title:"The Visual AI Stack",sp:"A. Lee, L. Liu, W. Liu · đ.phối Grace Shao",org:"Alibaba Cloud · Meitu · Video Rebirth · AI Proem",desc:"Hệ sinh thái AI tạo sinh tăng tốc qua mô hình, video, agent và nền tảng tiêu dùng — một 'stack đổi mới song song' với hệ quả toàn cầu."},
+ {day:2,stage:"general",t:"13:00",e:"14:00",type:"",title:"Lunch",brk:1,sp:"",org:"",desc:""},
+ {day:2,stage:"plaud",t:"14:00",e:"14:40",type:"Panel",title:"The AI-Native Builder: When Design, Product and Engineering Converge",sp:"R. Hunt, N. Xu, J. Florido · đ.phối Savannah Kunovsky",org:"Notion · Plaud · Magnific · IDEO",desc:"AI thu hẹp khoảng cách giữa ý tưởng, thiết kế, prototype và sản phẩm — tạo thế hệ 'builder' mới đi từ ý tưởng đến thực thi nhanh hơn bao giờ hết."},
+ {day:2,stage:"plaud",t:"14:40",e:"15:10",type:"Panel",title:"The East-West AI Startup Race",sp:"B. Moon, K. Mohla · đ.phối Selina Xu",org:"SparkLabs · B Capital · Office of Eric Schmidt",desc:"Từ Trung Quốc đến Thung lũng Silicon đến Đông Nam Á: vốn, nhân tài và hệ sinh thái startup định hình thế hệ công ty AI tiếp theo ở cả phương Đông lẫn phương Tây."},
+ {day:2,stage:"plaud",t:"15:10",e:"15:40",type:"Panel",title:"Data Infrastructure for the Agentic Web",sp:"O. Lenchner, J. Fang",org:"Bright Data · Crunchbase",desc:"Hạ tầng dữ liệu cho 'web của agent'."},
+ {day:2,stage:"plaud",t:"15:40",e:"16:00",type:"Keynote",title:"Agentic Future of the Web: Within Reach or Cancelled?",sp:"Juras Juršėnas",org:"Oxylabs",desc:"Web agentic là giai đoạn tiến hóa kế tiếp, nhưng web hôm nay là nơi thù địch với agent — đầy bẫy và chướng ngại. Khi 'cuộc chiến dữ liệu' chưa ngã ngũ, agent vẫn cần 'bàn tay con người'."},
+ {day:2,stage:"plaud",t:"16:00",e:"16:40",type:"Panel",title:"The 100x Company: Rebuilding the Business Around AI",sp:"H. Kim, H. Sallmann, A. Li · đ.phối Bernard Leong",org:"INSEAD · Google Cloud · Simular · Dorje AI",desc:"AI thành lớp trí tuệ bên trong công ty — kết nối mọi workflow, tài liệu, tương tác khách hàng thành hệ thống biết suy luận, học và hành động; hướng tới tăng trưởng cấp số nhân."},
+ {day:2,stage:"plaud",t:"16:40",e:"17:10",type:"Panel",title:"Biointelligence: AI and the Future of Health",sp:"S. Lugo, A. Aliper, K. Leung · đ.phối Daniel Ting",org:"Radar · Insilico · Great Bay Bio · SingHealth",desc:"'Trí tuệ sinh học' — AI và tương lai của y tế, khám phá thuốc và công nghệ sinh học."},
+ {day:2,stage:"plaud",t:"17:10",e:"17:40",type:"Panel",title:"Finance in the Age of Agents",sp:"C. Yagnik, B. Bai, T. Wong, J. Yip · đ.phối Andrew Murray",org:"Arta · MetaComp · Airwallex · HSBC · FIS",desc:"Agent AI chuyển từ 'insight sang thực thi', tái định hình cách ra quyết định tài chính, quản lý vốn, giám sát rủi ro và luân chuyển tiền trên thị trường toàn cầu."},
+ {day:2,stage:"plaud",t:"17:40",e:"17:50",type:"Genesis",title:"Genesis Startup Competition — Công bố quán quân",sp:"",org:"",desc:"Công bố đội thắng cuộc thi Genesis."},
+ {day:2,stage:"plaud",t:"17:50",e:"18:00",type:"Closing",title:"SuperAI 2026 Closing Remarks",sp:"",org:"",desc:"Phát biểu bế mạc."},
+ {day:2,stage:"general",t:"18:00",e:"19:30",type:"",title:"Networking Drinks",brk:1,sp:"",org:"",desc:"Giao lưu cuối sự kiện."},
+
+ // ===== DAY 2 — WEKA =====
+ {day:2,stage:"weka",t:"09:30",e:"10:00",type:"Panel",title:"The Future Factory: How AI Is Reshaping Manufacturing",sp:"J. Xu, D. Yu, R. Nambiar · đ.phối Sophie Chiu",org:"Innowave · MetAI · Botsync · AppWorks",desc:"'Nhà máy tương lai' — cách AI tái định hình sản xuất chế tạo."},
+ {day:2,stage:"weka",t:"10:00",e:"10:15",type:"Keynote",title:"Keynote (Aaru)",sp:"Ned Koh",org:"Aaru",desc:"Keynote từ đồng sáng lập & chủ tịch Aaru."},
+ {day:2,stage:"weka",t:"10:15",e:"10:30",type:"Keynote",title:"Keynote (Airwallex)",sp:"Timothy Wong",org:"Airwallex",desc:"Dữ liệu & AI trong fintech, góc nhìn Airwallex."},
+ {day:2,stage:"weka",t:"11:00",e:"12:00",type:"Genesis",title:"Genesis Startup Competition — Vòng Chung kết",sp:"5 đội vào chung kết",org:"powered by OpenAI & Microsoft for Startups",desc:"Vòng chung kết: 5 đội trình bày (mỗi đội ~10 phút) trước ban giám khảo, tiến tới công bố quán quân."},
+ {day:2,stage:"weka",t:"12:00",e:"12:15",type:"Keynote",title:"Keynote (Mawari)",sp:"Luis Ramirez",org:"Mawari",desc:"Keynote từ đồng sáng lập & CEO Mawari."},
+ {day:2,stage:"weka",t:"12:15",e:"12:30",type:"Keynote",title:"Current State of AI: Industry Constraints and AMD's Value Proposition",sp:"Sachin Hindupur",org:"AMD",desc:"Hiện trạng AI: các ràng buộc của ngành và đề xuất giá trị của AMD."},
+ {day:2,stage:"weka",t:"12:30",e:"12:45",type:"Keynote",title:"Keynote (Mistral)",sp:"Geoff Soon",org:"Mistral",desc:"Góc nhìn từ VP Revenue APAC của Mistral."},
+ {day:2,stage:"general",t:"13:00",e:"14:00",type:"",title:"Lunch",brk:1,sp:"",org:"",desc:""},
+ {day:2,stage:"weka",t:"14:15",e:"14:30",type:"Keynote",title:"Seeing Past the Illusion of an AGI Windfall Mirage",sp:"Alvin W. Graylin",org:"Stanford HAI",desc:"Phản biện 'viễn tưởng' rằng ai đạt AGI đầu tiên sẽ thành deca-trillionaire; vì sao khoản 'lợi nhuận trời cho' không có thật và cần thay đổi chính sách gì để AI thành lợi ích công toàn cầu."},
+ {day:2,stage:"weka",t:"14:30",e:"14:45",type:"Keynote",title:"Enterprise AI Transformation: How Cohere Drives Real-World Business Value",sp:"Brandon Chew",org:"Cohere",desc:"Cách Cohere giúp doanh nghiệp tái hình dung vận hành & trải nghiệm khách hàng qua agent AI dựa trên LLM hiện đại để tạo ROI hữu hình."},
+ {day:2,stage:"weka",t:"15:15",e:"15:30",type:"Keynote",title:"Keynote (SingHealth AI Office)",sp:"Daniel Ting",org:"SingHealth AI Office",desc:"AI trong y tế lâm sàng."},
+ {day:2,stage:"weka",t:"15:30",e:"15:45",type:"Keynote",title:"Keynote",sp:"Chris Kerzich",org:"Senior VP",desc:"Keynote (chủ đề công bố sau)."},
+ {day:2,stage:"weka",t:"16:00",e:"16:15",type:"Keynote",title:"Keynote (Valeo Health)",sp:"Sundeep Singh Sahni",org:"Valeo Health",desc:"Keynote từ CEO Valeo Health."},
+ {day:2,stage:"weka",t:"16:15",e:"16:45",type:"Panel",title:"Agentic AI in Action: From Framework to Deployment",sp:"W. S. Lee, C. K. Lim, H. Lau · đ.phối Zee Kin Yeong",org:"IMDA · Drew & Napier · SG Academy of Law",desc:"Agentic AI đi nhanh từ ý tưởng đến triển khai. Bàn về Model AI Governance Framework cho Agentic AI của IMDA: giám sát, trách nhiệm giải trình, rủi ro, biện pháp bảo vệ, cân bằng đổi mới với tuân thủ."},
+ {day:2,stage:"weka",t:"16:45",e:"17:00",type:"Keynote",title:"A New Way to Work: How We Made Our Team AI Native",sp:"Alex Svanevik",org:"Nansen",desc:"Cách biến cả đội ngũ trở thành 'AI-native'."},
+ {day:2,stage:"weka",t:"17:00",e:"17:15",type:"Keynote",title:"Keynote (Animoca Brands)",sp:"Yat Siu",org:"Animoca Brands",desc:"Keynote từ đồng sáng lập & chủ tịch điều hành Animoca Brands."},
+ {day:2,stage:"weka",t:"17:15",e:"17:30",type:"Keynote",title:"Strange New Bodies: Design Beyond Robots",sp:"Savannah Kunovsky",org:"IDEO",desc:"'Những cơ thể mới lạ' — thiết kế vượt ra ngoài khái niệm robot truyền thống."},
+ {day:2,stage:"weka",t:"17:30",e:"18:00",type:"Hackathon",title:"NEXT Hackathon — Demo chung kết & Trao giải",sp:"Các đội vào chung kết",org:"NEXT Hackathon",desc:"Demo của các đội lọt chung kết, tổng kết và trao giải."},
+
+ // ===== DAY 2 — FORUM =====
+ {day:2,stage:"forum",t:"09:30",e:"09:55",type:"Sponsor",title:"Building Efficient Foundation Models for Agentic AI: A StepFun Perspective",sp:"",org:"StepFun",desc:"Xây mô hình nền tảng hiệu quả cho agentic AI, góc nhìn StepFun."},
+ {day:2,stage:"forum",t:"10:00",e:"10:25",type:"Sponsor",title:"Scaling AI Without Breaking Trust: Governance, Systems, and the Path to Production",sp:"",org:"Jeen.ai",desc:"Mở rộng AI mà không đánh mất niềm tin: quản trị, hệ thống và con đường tới production."},
+ {day:2,stage:"forum",t:"10:30",e:"10:55",type:"Sponsor",title:"Building for Inference Scale: The New AI Infrastructure Playbook",sp:"",org:"WEKA",desc:"'Cẩm nang' hạ tầng AI mới cho quy mô inference."},
+ {day:2,stage:"forum",t:"11:00",e:"11:25",type:"Sponsor",title:"Tokenmaxxing for Cybersecurity",sp:"",org:"WEKA",desc:"Tối ưu token cho an ninh mạng."},
+ {day:2,stage:"forum",t:"11:30",e:"11:55",type:"Sponsor",title:"Building Custom AI Perception Pipelines on Edge CPUs and Accelerators",sp:"",org:"Arm",desc:"Xây pipeline nhận thức AI tùy biến trên CPU/accelerator ở biên (edge)."},
+ {day:2,stage:"forum",t:"12:30",e:"12:55",type:"Sponsor",title:"NetNut: The 360° AI Data Engine",sp:"",org:"NetNut",desc:"'Cỗ máy dữ liệu AI 360°'."},
+ {day:2,stage:"forum",t:"13:00",e:"13:55",type:"Sponsor",title:"Built for Agents: The Infrastructure Powering the AI Economy",sp:"",org:"",desc:"Hạ tầng được thiết kế cho agent, tiếp sức cho nền kinh tế AI."},
+ {day:2,stage:"forum",t:"14:00",e:"14:25",type:"Sponsor",title:"Defining the AI-Native Investing Platform",sp:"",org:"Longbridge",desc:"Định nghĩa nền tảng đầu tư AI-native."},
+ {day:2,stage:"forum",t:"14:30",e:"14:55",type:"Sponsor",title:"Agent Personas: From Tool Chaos to Enterprise Security and Governance",sp:"",org:"Cequence",desc:"'Agent personas': từ hỗn loạn công cụ đến bảo mật và quản trị doanh nghiệp."},
+ {day:2,stage:"forum",t:"15:00",e:"15:25",type:"Sponsor",title:"\"Can't I Just Use ChatGPT?\" No — AI Photo Workflows Need More",sp:"",org:"Nero AI",desc:"Vì sao workflow ảnh AI cần nhiều hơn ChatGPT."},
+ {day:2,stage:"forum",t:"15:30",e:"15:55",type:"Sponsor",title:"AI is Already Running Your Marketing. Is It Running It Right?",sp:"",org:"Klaviyo",desc:"AI đã đang vận hành marketing của bạn — nhưng có đúng cách không?"},
+ {day:2,stage:"forum",t:"16:30",e:"16:55",type:"Sponsor",title:"TGB AI Village — Founder Spotlight",sp:"",org:"The Generative Beings",desc:"Điểm sáng các founder tại 'AI Village'."},
+ {day:2,stage:"forum",t:"17:00",e:"17:30",type:"Sponsor",title:"A Conversation with Benedict Evans",sp:"Benedict Evans",org:"Analyst",desc:"Trò chuyện chuyên sâu với nhà phân tích Benedict Evans."}
+];
+
+const STAGE_LABEL={plaud:"Plaud Main Stage",weka:"WEKA Stage",forum:"The Forum",general:"Chung"};
+const toMin=t=>{const[h,m]=t.split(":").map(Number);return h*60+m;};
+const state={day:1,stage:"all",q:""};
+
+const schedule=document.getElementById('schedule');
+const countEl=document.getElementById('count');
+
+function render(){
+  const q=state.q.trim().toLowerCase();
+  let list=DATA.filter(s=>s.day===state.day)
+    .filter(s=>state.stage==="all"?true:(s.stage===state.stage||s.stage==="general"))
+    .filter(s=>{
+      if(!q)return true;
+      return (s.title+" "+s.sp+" "+s.org+" "+s.desc).toLowerCase().includes(q);
+    });
+  // when searching, hide breaks unless they match; keep simple: breaks always shown unless searching
+  if(q) list=list.filter(s=>!s.brk || (s.title+s.org).toLowerCase().includes(q));
+  list.sort((a,b)=>toMin(a.t)-toMin(b.t) || a.stage.localeCompare(b.stage));
+
+  const real=list.filter(s=>!s.brk && s.stage!=="general").length;
+  countEl.textContent=`${String(real).padStart(2,'0')} session · Ngày ${state.day} · ${state.stage==="all"?"tất cả sân khấu":STAGE_LABEL[state.stage]}${q?` · lọc "${state.q}"`:""}`;
+
+  if(!list.length){schedule.innerHTML='<div class="empty">Không có session nào khớp.</div>';return;}
+
+  schedule.innerHTML=list.map((s,i)=>{
+    const stageTag = s.stage!=="general"
+      ? `<span class="badge">${STAGE_LABEL[s.stage]}</span>` : "";
+    const typeTag = s.type ? `<span class="type">${s.type}</span>` : "";
+    const speaker = s.sp ? `<div class="speaker"><b>${s.sp}</b>${s.org?` <span class="org">· ${s.org}</span>`:""}</div>`
+                          : (s.org?`<div class="speaker"><span class="org">${s.org}</span></div>`:"");
+    const desc = s.desc ? `<div class="desc">${s.desc}</div>` : "";
+    return `<article class="session${s.brk?' break':''}" data-stage="${s.stage}" style="animation-delay:${Math.min(i*32,520)}ms">
+      <div class="time">${s.t}<span class="end">${s.e}</span></div>
+      <div class="body">
+        <div class="s-top">${stageTag}${typeTag}</div>
+        <div class="s-title${s.brk?' break':''}">${s.title}</div>
+        ${speaker}${desc}
+      </div>
+    </article>`;
+  }).join("");
+}
+
+// ===== controls =====
+document.getElementById('dayToggle').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  state.day=+b.dataset.day;
+  [...e.currentTarget.children].forEach(x=>x.classList.toggle('active',x===b));
+  render();
+});
+document.getElementById('filters').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  state.stage=b.dataset.stage;
+  [...e.currentTarget.children].forEach(x=>x.classList.toggle('active',x===b));
+  render();
+});
+document.getElementById('search').addEventListener('input',e=>{state.q=e.target.value;render();});
+
+render();
+</script>
+</body>
+</html>
