@@ -24,8 +24,11 @@ Ngoài ra còn có 6 trụ cột nội dung xuyên suốt: **Frontier Models, AI
 
 ## 🎤 PLAUD MAIN STAGE — Ngày 1
 
-### 07:30–09:00 · Continental Breakfast (Ăn sáng & đăng ký)
-Đăng ký, nhận thẻ và ăn sáng trước giờ khai mạc.
+### 07:30–09:00 · Registration (Đăng ký)
+Đăng ký tham dự, nhận tài liệu hội nghị và kết nối với các đại biểu trước khi bước vào ngày làm việc gồm các phiên chiến lược và kỹ thuật chuyên sâu.
+
+### 07:30–09:00 · Continental Breakfast (Ăn sáng)
+Bữa sáng nhẹ kèm cà phê, do **Vocalbeats.AI** tài trợ; cơ hội networking trong không khí thư giãn.
 
 ### 09:00–09:10 · Welcome to the Future: SuperAI 2026 (Opening Remarks)
 Phát biểu khai mạc, định hướng chủ đề cho hai ngày hội nghị.
@@ -43,7 +46,7 @@ Phân tích cách AI đang định hình lại phần mềm, doanh nghiệp và 
 Mô hình frontier đang trở thành lớp nền tảng cho chu kỳ công nghệ tiếp theo. Panel quy tụ các nhà xây dựng mô hình và nhà đầu tư AI để bàn về: frontier AI đang đi về đâu, điều gì quan trọng **ngoài các benchmark**, và làn sóng năng lực kế tiếp sẽ định hình lại "AI stack" toàn cầu ra sao.
 
 ### 10:30–10:50 · Enabling AI Agents to Discover the Web in Real Time (Keynote)
-**Or Lenchner** — CEO, Bright Data (trình bày bởi Ariel Shulman, CPO)
+**Ariel Shulman** — CPO, Bright Data
 Trong nhiều thập kỷ web là "lãnh địa" của Google. Nay các AI agent đang tiếp quản — nhưng chúng chỉ tốt bằng những gì chúng "nhìn thấy", thường bị chặn hoặc làm việc trên dữ liệu cũ, dẫn đến **quyết định sai một cách tự tin, nhanh hơn bất kỳ con người nào**. Mục tiêu: trao cho agent "đôi mắt" thời gian thực, đáng tin cậy về thế giới.
 
 ### 10:50–11:30 · Robotics and the Rise of Physical AI (Panel)
@@ -62,7 +65,7 @@ Compute đã trở thành "nền công nghiệp" của AI. Panel mổ xẻ **chi
 **Nathan Xu** — Co-Founder & CEO, Plaud
 "AI bạn dùng sáng nay vẫn nhìn thế giới qua bàn phím và màn hình — tức đang chạy *input của thập niên 1980 trên một con người của năm 2026*." Câu hỏi không phải agent có vận hành công việc của thế giới hay không, mà là **bạn cho chúng ăn dữ liệu gì** — và hội thoại (conversation) là dạng trí tuệ thô sơ nhất, giàu ngữ cảnh nhất.
 
-### 13:00–14:00 · Lunch (Ăn trưa)
+### 13:00–14:00 · Lunch (Ăn trưa, do Vocalbeats.AI tài trợ)
 
 ### 14:00–14:40 · Turning AI Ambition into Business Value at Scale (Panel)
 **Charamporn Jotikasthira** (Bangkok Bank) · **Richard Fleming** (Bain & Company) · và các diễn giả từ Minden.ai, Microsoft Asia
