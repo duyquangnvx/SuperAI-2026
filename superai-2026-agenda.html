@@ -276,7 +276,6 @@ const DATA = [
  {day:1,stage:"weka",t:"12:15",e:"12:30",type:"Keynote",title:"Your Agent Stack Is Broken at the Bottom",sp:"Maruthi Lokanathan",org:"ClickHouse",desc:"'Agent stack của bạn đang hỏng từ tầng đáy' — vai trò của lớp dữ liệu/database cho agent."},
  {day:1,stage:"weka",t:"12:30",e:"12:45",type:"Keynote",title:"Hybrid Agentic Embedded Finance: AI, Stablecoins and RWAs",sp:"Bo Bai",org:"MetaComp",desc:"Tài chính nhúng kiểu agentic lai: AI, stablecoin và tài sản thực token hóa (RWA)."},
  {day:1,stage:"weka",t:"12:45",e:"13:00",type:"Keynote",title:"Reinforcement Learning and the Next Generation of AI",sp:"Michael Spranger",org:"Sony Research",desc:"Học tăng cường (reinforcement learning) và thế hệ AI tiếp theo — góc nhìn nghiên cứu từ Sony."},
- {day:1,stage:"general",t:"13:00",e:"14:00",type:"",title:"Lunch",brk:1,sp:"",org:"",desc:""},
  {day:1,stage:"weka",t:"14:00",e:"14:15",type:"Keynote",title:"Synthetic Hires: Integrating High-Context Agents in the Critical Path",sp:"Hrishi Olickel",org:"Southbridge AI",desc:"Vấn đề của AI 2026 không phải mua công cụ mà là ngăn chúng tạo rác và làm hỏng thứ đang chạy tốt: connector dữ liệu first-mile, SOP thực thi bằng AI, tích hợp vào cơ cấu hiện có."},
  {day:1,stage:"weka",t:"14:15",e:"14:30",type:"Keynote",title:"Efficient Foundation Models for the Agentic Era",sp:"Ailing Teng",org:"StepFun",desc:"Mô hình nền tảng phải nhanh hơn, đáng tin hơn, hiệu quả hơn khi triển khai quy mô lớn — tiến bộ về kiến trúc mô hình và hệ thống inference."},
  {day:1,stage:"weka",t:"14:45",e:"15:00",type:"Keynote",title:"How the World's Largest Sovereign Wealth Fund Uses AI",sp:"Oscar Hjelde",org:"Norges Bank Investment Mgmt",desc:"Cách quỹ đầu tư quốc gia lớn nhất thế giới (Na Uy) ứng dụng AI."},
@@ -334,7 +333,6 @@ const DATA = [
  {day:2,stage:"weka",t:"12:15",e:"12:30",type:"Keynote",title:"Current State of AI: Industry Constraints and AMD's Value Proposition",sp:"Sachin Hindupur",org:"AMD",desc:"Hiện trạng AI: các ràng buộc của ngành và đề xuất giá trị của AMD."},
  {day:2,stage:"weka",t:"12:30",e:"12:45",type:"Keynote",title:"Navigating AI Transformation: Finding Your Path to Success",sp:"Geoff Soon",org:"Mistral",desc:"Định hướng chuyển đổi AI: tìm con đường tới thành công — góc nhìn từ VP Revenue APAC của Mistral."},
  {day:2,stage:"weka",t:"12:45",e:"13:00",type:"Keynote",title:"Agentic Commerce: The New CX From Discovery to Execution",sp:"Oliver Tan",org:"Rezolve AI",desc:"Thương mại kiểu agentic: trải nghiệm khách hàng mới từ khám phá đến thực thi."},
- {day:2,stage:"general",t:"13:00",e:"14:00",type:"",title:"Lunch",brk:1,sp:"",org:"",desc:""},
  {day:2,stage:"weka",t:"14:00",e:"14:15",type:"Keynote",title:"Keynote (SenseTime International)",sp:"Zhongang Cai",org:"SenseTime International",desc:"Keynote từ Principal Research Scientist của SenseTime International."},
  {day:2,stage:"weka",t:"14:15",e:"14:30",type:"Keynote",title:"Seeing Past the Illusion of an AGI Windfall Mirage",sp:"Alvin W. Graylin",org:"Stanford HAI",desc:"Phản biện 'viễn tưởng' rằng ai đạt AGI đầu tiên sẽ thành deca-trillionaire; vì sao khoản 'lợi nhuận trời cho' không có thật và cần thay đổi chính sách gì để AI thành lợi ích công toàn cầu."},
  {day:2,stage:"weka",t:"14:30",e:"14:45",type:"Keynote",title:"Enterprise AI Transformation: How Cohere Drives Real-World Business Value",sp:"Brandon Chew",org:"Cohere",desc:"Cách Cohere giúp doanh nghiệp tái hình dung vận hành & trải nghiệm khách hàng qua agent AI dựa trên LLM hiện đại để tạo ROI hữu hình."},
@@ -371,8 +369,9 @@ const STAGE_LABEL={plaud:"Plaud Main Stage",weka:"WEKA Stage",forum:"The Forum",
 const toMin=t=>{const[h,m]=t.split(":").map(Number);return h*60+m;};
 const state={day:1,stage:"all",q:"",favOnly:false};
 
-// stable id per session (index never changes since DATA order is fixed)
-DATA.forEach((s,i)=>s._id=i);
+// stable id per session — derived from day+stage+time (unique per real session),
+// so favourites survive any reordering/insertion in DATA. No special chars → safe in attributes.
+DATA.forEach(s=>s._id=`${s.day}-${s.stage}-${s.t.replace(":","")}`);
 
 const FAV_KEY="superai2026.favs";
 let favs=new Set();
@@ -444,7 +443,7 @@ document.getElementById('search').addEventListener('input',e=>{state.q=e.target.
 // toggle favourite (event delegation) — no full re-render unless in fav-only view
 schedule.addEventListener('click',e=>{
   const btn=e.target.closest('.fav-btn');if(!btn)return;
-  const id=+btn.dataset.id, art=btn.closest('.session');
+  const id=btn.dataset.id, art=btn.closest('.session');
   if(favs.has(id)){favs.delete(id);art.classList.remove('faved');}
   else{favs.add(id);art.classList.add('faved');}
   saveFavs();updateFavCount();
