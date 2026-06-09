@@ -151,6 +151,21 @@
   .speaker .org{color:var(--txt-faint)}
   .desc{margin-top:9px;font-size:14.5px;color:var(--txt-dim);max-width:740px;line-height:1.55}
 
+  /* favourite star */
+  .session:not(.break) .body{padding-right:48px}
+  .fav-btn{position:absolute;top:16px;right:8px;width:34px;height:34px;border:none;background:none;
+    cursor:pointer;color:var(--txt-faint);display:grid;place-items:center;border-radius:9px;
+    transition:.2s;opacity:.5}
+  .fav-btn:hover{background:var(--accent-soft);color:var(--accent);opacity:1;transform:scale(1.12)}
+  .fav-btn svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;transition:.2s}
+  .session.faved .fav-btn{color:var(--plaud);opacity:1}
+  .session.faved .fav-btn svg{fill:var(--plaud);stroke:var(--plaud);filter:drop-shadow(0 0 7px rgba(245,181,61,.55))}
+  .fav-chip{gap:7px}
+  .fav-chip .st{font-size:13px;line-height:1}
+  .fav-chip b{font-weight:600;font-size:10px;opacity:.7;padding:1px 5px;border-radius:5px;background:rgba(255,255,255,.08)}
+  .fav-chip.active{border-color:var(--plaud);background:var(--plaud-soft);color:var(--plaud)}
+  .fav-chip.active b{background:rgba(245,181,61,.25)}
+
   .session[data-stage="plaud"]{--accent:var(--plaud);--accent-soft:var(--plaud-soft)}
   .session[data-stage="weka"]{--accent:var(--weka);--accent-soft:var(--weka-soft)}
   .session[data-stage="forum"]{--accent:var(--forum);--accent-soft:var(--forum-soft)}
@@ -203,6 +218,7 @@
       <button class="chip" data-stage="weka"><span class="sw"></span>WEKA</button>
       <button class="chip" data-stage="forum"><span class="sw"></span>The Forum</button>
     </div>
+    <button class="chip fav-chip" id="favChip" title="Chỉ hiện các session bạn đã đánh dấu"><span class="st">★</span>Yêu thích<b id="favCount">0</b></button>
     <div class="search">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
       <input id="search" type="text" placeholder="Tìm session, diễn giả, công ty…">
@@ -344,7 +360,17 @@ const DATA = [
 
 const STAGE_LABEL={plaud:"Plaud Main Stage",weka:"WEKA Stage",forum:"The Forum",general:"Chung"};
 const toMin=t=>{const[h,m]=t.split(":").map(Number);return h*60+m;};
-const state={day:1,stage:"all",q:""};
+const state={day:1,stage:"all",q:"",favOnly:false};
+
+// stable id per session (index never changes since DATA order is fixed)
+DATA.forEach((s,i)=>s._id=i);
+
+const FAV_KEY="superai2026.favs";
+let favs=new Set();
+try{favs=new Set(JSON.parse(localStorage.getItem(FAV_KEY)||"[]"));}catch(e){}
+const saveFavs=()=>localStorage.setItem(FAV_KEY,JSON.stringify([...favs]));
+const favCountEl=document.getElementById('favCount');
+const updateFavCount=()=>favCountEl.textContent=favs.size;
 
 const schedule=document.getElementById('schedule');
 const countEl=document.getElementById('count');
@@ -352,6 +378,7 @@ const countEl=document.getElementById('count');
 function render(){
   const q=state.q.trim().toLowerCase();
   let list=DATA.filter(s=>s.day===state.day)
+    .filter(s=>state.favOnly?favs.has(s._id):true)
     .filter(s=>state.stage==="all"?true:(s.stage===state.stage||s.stage==="general"))
     .filter(s=>{
       if(!q)return true;
@@ -362,9 +389,12 @@ function render(){
   list.sort((a,b)=>toMin(a.t)-toMin(b.t) || a.stage.localeCompare(b.stage));
 
   const real=list.filter(s=>!s.brk && s.stage!=="general").length;
-  countEl.textContent=`${String(real).padStart(2,'0')} session · Ngày ${state.day} · ${state.stage==="all"?"tất cả sân khấu":STAGE_LABEL[state.stage]}${q?` · lọc "${state.q}"`:""}`;
+  countEl.textContent=`${String(real).padStart(2,'0')} session · Ngày ${state.day} · ${state.favOnly?"⭐ yêu thích · ":""}${state.stage==="all"?"tất cả sân khấu":STAGE_LABEL[state.stage]}${q?` · lọc "${state.q}"`:""}`;
 
-  if(!list.length){schedule.innerHTML='<div class="empty">Không có session nào khớp.</div>';return;}
+  if(!list.length){
+    schedule.innerHTML=`<div class="empty">${state.favOnly?'Chưa có session yêu thích nào.<br>Bấm ★ trên mỗi session để thêm vào lịch của bạn.':'Không có session nào khớp.'}</div>`;
+    return;
+  }
 
   schedule.innerHTML=list.map((s,i)=>{
     const stageTag = s.stage!=="general"
@@ -373,9 +403,12 @@ function render(){
     const speaker = s.sp ? `<div class="speaker"><b>${s.sp}</b>${s.org?` <span class="org">· ${s.org}</span>`:""}</div>`
                           : (s.org?`<div class="speaker"><span class="org">${s.org}</span></div>`:"");
     const desc = s.desc ? `<div class="desc">${s.desc}</div>` : "";
-    return `<article class="session${s.brk?' break':''}" data-stage="${s.stage}" style="animation-delay:${Math.min(i*32,520)}ms">
+    const canFav = !s.brk && s.stage!=="general";
+    const favBtn = canFav ? `<button class="fav-btn" data-id="${s._id}" title="Đánh dấu yêu thích" aria-label="Đánh dấu yêu thích"><svg viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L12 16.77 6.8 19.5l.99-5.79-4.21-4.1 5.82-.85z" stroke-linejoin="round"/></svg></button>` : "";
+    return `<article class="session${s.brk?' break':''}${favs.has(s._id)?' faved':''}" data-stage="${s.stage}" style="animation-delay:${Math.min(i*32,520)}ms">
       <div class="time">${s.t}<span class="end">${s.e}</span></div>
       <div class="body">
+        ${favBtn}
         <div class="s-top">${stageTag}${typeTag}</div>
         <div class="s-title${s.brk?' break':''}">${s.title}</div>
         ${speaker}${desc}
@@ -399,6 +432,23 @@ document.getElementById('filters').addEventListener('click',e=>{
 });
 document.getElementById('search').addEventListener('input',e=>{state.q=e.target.value;render();});
 
+// toggle favourite (event delegation) — no full re-render unless in fav-only view
+schedule.addEventListener('click',e=>{
+  const btn=e.target.closest('.fav-btn');if(!btn)return;
+  const id=+btn.dataset.id, art=btn.closest('.session');
+  if(favs.has(id)){favs.delete(id);art.classList.remove('faved');}
+  else{favs.add(id);art.classList.add('faved');}
+  saveFavs();updateFavCount();
+  if(state.favOnly)render();
+});
+
+document.getElementById('favChip').addEventListener('click',e=>{
+  state.favOnly=!state.favOnly;
+  e.currentTarget.classList.toggle('active',state.favOnly);
+  render();
+});
+
+updateFavCount();
 render();
 </script>
 </body>
